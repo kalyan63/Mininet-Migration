@@ -16,6 +16,10 @@ File used for download is:
 
     > !['Single Image'](q1_a.png)
 
+    > Here we can see similar Download Time, but Host h3 has lower bandwidth than the other two. The main reason for this is concurrent download by all the host. Here I would first invoke the client of h2 and then h3 and h4. Since it takes time for my python code to run one client after the other so h3 will always be in a race condition with h2 and h4 since its being invoked in the middle. 
+
+    > Since its concurrent download the server bandwidth is equal to sum of the above bandwidths.
+
 2. **Linear Topology (Bandwidth):**
     > 
         |      Bandwidth (in Mb)        |   10          |   100         |   1000 (1 Gb)     |      
@@ -26,6 +30,10 @@ File used for download is:
     > **Sample output from the terminal :**
 
     > !['Bandwidth'](q1_b.png)
+
+    > Here we can see that as bandwidth increases the Throughput also increases. From above table we can say that throughput is linaerly related to bandwidth. 
+
+    > Here 1Gb provides the best Throughput just as expected.
 
 3. **Linear Topology (Delay):**
     >
@@ -38,6 +46,10 @@ File used for download is:
 
     > !['Delay'](q1_c.png)
 
+    > We know that as delay increases the download time increases, Since packet takes longer time to travel through the network. 
+
+    > Here Throughput is inversly proportional to delay, so lesser the delay better is the throughput. 
+
 4. **Linear Topology (Loss):**
     >
         |       Loss (in %)             |   1% loss     |   2% loss     |   5% loss     |
@@ -48,6 +60,10 @@ File used for download is:
     > **Sample output from the terminal :**
 
     > !['Delay'](q1_d.png)
+
+    > Here we can see almost an exponential drop in throughput as loss increases in the network. This is because tcp is a relaiable data transfer layer and would wait till all the packets reach the destination. Hence as loss increases Download time increases. 
+
+    > We also know in some implementation the whole window is dropped if there is packet loss. So any loss would severly impact the performance of tcp. 
 
 5. **Linear Topology (hop):**
     >
@@ -61,3 +77,7 @@ File used for download is:
     > !['Delay'](q1_e_1.png)
 
     > !['Delay'](q1_e_2.png)
+
+    > Here we can see that for more than 6 switchs the tcp connection is not established.
+
+    > So if the network has huge RTT the tcp connection is not established, since there would always be a timeout before the packet returns. Hence it very important to set a proper timeout in tcp connection.  
