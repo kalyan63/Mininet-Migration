@@ -17,25 +17,25 @@ class TreeCustomTopo( Topo ):
             switches.append(self.addSwitch(s))
 
         #Adding Links
-        self.addLink(switches[0],switches[1], cls=TCLink , bw = 400)
-        self.addLink(switches[0],switches[2], cls=TCLink , bw = 400)
-        self.addLink(switches[1],switches[3], cls=TCLink , bw = 200)
-        self.addLink(switches[1],switches[4], cls=TCLink , bw = 200)
-        self.addLink(switches[2],switches[5], cls=TCLink , bw = 200)
-        self.addLink(switches[2],switches[6], cls=TCLink , bw = 200)
+        self.addLink(switches[0],switches[1], cls=TCLink , bw = 40)
+        self.addLink(switches[0],switches[2], cls=TCLink , bw = 40)
+        self.addLink(switches[1],switches[3], cls=TCLink , bw = 20)
+        self.addLink(switches[1],switches[4], cls=TCLink , bw = 20)
+        self.addLink(switches[2],switches[5], cls=TCLink , bw = 20)
+        self.addLink(switches[2],switches[6], cls=TCLink , bw = 20)
 
-        self.addLink(hosts[0],switches[0],cls=TCLink, bw = 400 )
-        self.addLink(hosts[9],switches[3],cls=TCLink, bw = 400 )
-        self.addLink(hosts[10],switches[6],cls=TCLink, bw = 400 )
+        self.addLink(hosts[0],switches[0],cls=TCLink, bw = 40 )
+        self.addLink(hosts[9],switches[3],cls=TCLink, bw = 40 )
+        self.addLink(hosts[10],switches[6],cls=TCLink, bw = 40 )
         
-        self.addLink(hosts[1],switches[3],cls=TCLink, bw = 100 )
-        self.addLink(hosts[2],switches[3],cls=TCLink, bw = 100 )
-        self.addLink(hosts[3],switches[4],cls=TCLink, bw = 100 )
-        self.addLink(hosts[4],switches[4],cls=TCLink, bw = 100 )
-        self.addLink(hosts[5],switches[5],cls=TCLink, bw = 100 )
-        self.addLink(hosts[6],switches[5],cls=TCLink, bw = 100 )
-        self.addLink(hosts[7],switches[6],cls=TCLink, bw = 100 )
-        self.addLink(hosts[8],switches[6],cls=TCLink, bw = 100 )
+        self.addLink(hosts[1],switches[3],cls=TCLink, bw = 10 )
+        self.addLink(hosts[2],switches[3],cls=TCLink, bw = 10 )
+        self.addLink(hosts[3],switches[4],cls=TCLink, bw = 10 )
+        self.addLink(hosts[4],switches[4],cls=TCLink, bw = 10 )
+        self.addLink(hosts[5],switches[5],cls=TCLink, bw = 10 )
+        self.addLink(hosts[6],switches[5],cls=TCLink, bw = 10 )
+        self.addLink(hosts[7],switches[6],cls=TCLink, bw = 10 )
+        self.addLink(hosts[8],switches[6],cls=TCLink, bw = 10 )
 
 def main():
     lg.setLogLevel('info')
@@ -65,30 +65,6 @@ def main():
     print(O.cmd('iperf -c {} |& tee -a O.txt &'.format(S2.IP())))
 
     sleep(25)
-    
-    # print("Server side S Text:---")
-    # with open('S.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("Server side S1 Text:---")
-    # with open('S1.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("Server side S2 Text:---")
-    # with open('S2.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("H Client side Text:---")
-    # with open('H.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("K Client side Text:---")
-    # with open('K.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("N Client side Text:---")
-    # with open('N.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("O client side Text:---")
-    # with open('O.txt', 'r') as fin:
-    #     print(fin.read())
-
-    #S2.cmd('sudo rm S.txt S1.txt S2.txt H.txt K.txt N.txt O.txt')
     net.stop()   
 
 if __name__ == '__main__':
