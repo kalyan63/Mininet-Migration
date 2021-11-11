@@ -56,23 +56,6 @@ def main():
     print(O.cmd('iperf -c {} |& tee -a O.txt &'.format(S.IP())))
 
     sleep(20)
-    # print("Server side Text:---")
-    # with open('S.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("H Client Text:---")
-    # with open('H.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("K Client Text:---")
-    # with open('K.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("N Client side Text:---")
-    # with open('N.txt', 'r') as fin:
-    #     print(fin.read())
-    # print("O client side Text:---")
-    # with open('O.txt', 'r') as fin:
-    #     print(fin.read())
-
-    #S.cmd('sudo rm S.txt H.txt K.txt N.txt O.txt')
     net.stop()
 
 if __name__ == '__main__':
